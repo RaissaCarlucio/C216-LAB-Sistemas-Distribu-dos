@@ -40,10 +40,13 @@ def atualizar_alunos():
     for aluno in alunos:
         if aluno["nome"] == nome:
             aluno["email"] = input("Digite o novo email: ")
-            aluno["curso"] = input("Digite o novo curso: ")
-            print("aluno atualizado com sucesso!")
+            novo_curso = input("Digite o novo curso: ")
+            if novo_curso != aluno["curso"]:
+                aluno["curso"] = novo_curso
+                aluno["matricula"] = gerar_matricula(novo_curso)
+            print("Aluno atualizado com sucesso!")
             return
-    print("aluno não encontrado :(")
+    print("Aluno não encontrado :(")
 
 def remover_aluno():
     nome = input("Digite o nome do aluno a ser removido: ")
